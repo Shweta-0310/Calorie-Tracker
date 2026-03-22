@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { getSupabase } from "@/lib/supabase-server";
 
 function getUserId(request: NextRequest): string | null {
   const id = request.headers.get("x-user-id");
@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "meal_name and calories are required" }, { status: 400 });
   }
 
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from("meals")
     .insert({

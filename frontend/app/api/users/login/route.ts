@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { getSupabase } from "@/lib/supabase-server";
 
 export async function POST(request: NextRequest) {
   const { username } = await request.json();
@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
   }
 
   const name = username.trim().toLowerCase();
+  const supabase = getSupabase();
 
   const { data, error } = await supabase
     .from("users")

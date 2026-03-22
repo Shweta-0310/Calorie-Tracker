@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { getSupabase } from "@/lib/supabase-server";
 
 function buildSummary(meals: any[]) {
   return {
@@ -26,6 +26,7 @@ export async function GET(request: NextRequest) {
   const start = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
   const end = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
 
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from("meals")
     .select("*")

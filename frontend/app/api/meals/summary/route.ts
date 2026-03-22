@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase-server";
+import { getSupabase } from "@/lib/supabase-server";
 
 export async function GET(request: NextRequest) {
   const user_id = request.headers.get("x-user-id")?.trim();
@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
   since.setDate(since.getDate() - days);
   since.setHours(0, 0, 0, 0);
 
+  const supabase = getSupabase();
   const { data, error } = await supabase
     .from("meals")
     .select("*")
