@@ -27,7 +27,7 @@ export default function DonutChart({ protein, carbs, fats, totalMeals }: Props) 
 
   return (
     <div className="flex flex-col items-center justify-center pt-6">
-      <svg viewBox="0 0 246 246" className="w-61.75 h-61.75">
+      <svg viewBox="0 0 246 246" className="w-44 h-44 md:w-61.75 md:h-61.75">
         {segments.map(({ value, color }, i) => {
           const pct = value / total;
           const dash = Math.max(pct * circumference - (hasData ? 4 : 0), 0);
@@ -51,7 +51,7 @@ export default function DonutChart({ protein, carbs, fats, totalMeals }: Props) 
         })}
         <text
           x={cx}
-          y={cy - 8}
+          y={cy + 4}
           textAnchor="middle"
           style={{ fontSize: 64, fontWeight: 400, fill: "#161616", letterSpacing: "-1.28px", fontFamily: "Inter, sans-serif" }}
         >
@@ -59,7 +59,7 @@ export default function DonutChart({ protein, carbs, fats, totalMeals }: Props) 
         </text>
         <text
           x={cx}
-          y={cy + 26}
+          y={cy + 38}
           textAnchor="middle"
           style={{ fontSize: 24, fontWeight: 300, fill: "#161616", letterSpacing: "-0.48px", fontFamily: "Inter, sans-serif" }}
         >

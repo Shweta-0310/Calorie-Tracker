@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
       </head>
-      <body className="h-full overflow-hidden flex flex-col bg-white">
+      <body className="flex flex-col bg-white md:h-full md:overflow-hidden">
         <Header />
         {children}
       </body>

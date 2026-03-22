@@ -28,15 +28,15 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="w-full max-w-[1200px] border-l border-r border-[#888] min-h-screen">
+      <div className="w-full max-w-300 md:border-l md:border-r border-[#888] min-h-screen">
         {/* Hero image */}
-        <div className="w-full h-[304px] overflow-hidden">
+        <div className="w-full h-48 md:h-76 overflow-hidden">
           <img src="/hero.jpg" alt="Food" className="w-full h-full object-cover" />
         </div>
 
         {/* Form */}
         <div className="flex flex-col items-center justify-center px-6 py-32 gap-8">
-          <div className="flex flex-col items-center gap-6 w-full max-w-[240px]">
+          <div className="flex flex-col items-center gap-6 w-full max-w-60">
             {error && (
               <p className="text-sm text-red-500 text-center">{error}</p>
             )}

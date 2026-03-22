@@ -84,13 +84,13 @@ export default function AddMealPage() {
   const isLoading = step === "loading" || step === "saving";
 
   return (
-    <div className="flex-1 flex flex-col items-center overflow-hidden pb-8">
-      <div className="h-125 flex overflow-hidden w-full max-w-300 border-l border-r border-b border-[#888]">
+    <div className="flex flex-col items-center pb-8 md:flex-1 md:overflow-hidden">
+      <div className="flex flex-col md:flex-row w-full max-w-300 border-b border-[#888] md:border-l md:border-r md:h-125 md:overflow-hidden">
 
         {/* Left: image drop zone */}
         <div
           {...getRootProps()}
-          className={`flex-1 flex items-center justify-center border-r border-[#888] cursor-pointer transition-colors overflow-hidden ${
+          className={`flex items-center justify-center h-56 md:h-auto md:flex-1 border-b border-[#888] md:border-b-0 md:border-r cursor-pointer transition-colors overflow-hidden ${
             isDragActive ? "bg-[#d4d4d4]" : "bg-[#eaeaea]"
           }`}
         >
@@ -107,7 +107,7 @@ export default function AddMealPage() {
         </div>
 
         {/* Right: controls */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-8 px-14 py-6">
+        <div className="flex flex-col items-center justify-center gap-6 px-6 py-8 md:flex-1 md:gap-8 md:px-14 md:py-6">
 
           {error && (
             <p className="text-[#ff4242] text-[14px] text-center tracking-[-0.02em]">{error}</p>

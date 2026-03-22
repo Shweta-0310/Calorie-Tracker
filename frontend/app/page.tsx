@@ -77,16 +77,16 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col items-center overflow-hidden pb-8">
+    <div className="flex flex-col items-center pb-8 md:flex-1 md:overflow-hidden">
       {error && (
-        <div className="shrink-0 w-full max-w-300 mx-4 mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+        <div className="w-full max-w-300 mx-4 mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
           {error}
         </div>
       )}
 
-      <div className="flex-1 flex flex-col overflow-hidden w-full max-w-300 border-l border-r border-b border-[#888]">
+      <div className="flex flex-col w-full max-w-300 border-b border-[#888] md:flex-1 md:border-l md:border-r md:overflow-hidden">
         {/* Hero image */}
-        <div className="shrink-0 w-full h-76 overflow-hidden">
+        <div className="shrink-0 w-full h-48 md:h-76 overflow-hidden">
           <img
             src="/hero.jpg"
             alt="Featured meal"
@@ -121,9 +121,9 @@ export default function DashboardPage() {
         </div>
 
         {/* Stats + Meal Distribution */}
-        <div className="flex flex-1 overflow-hidden border-b border-[#888]">
+        <div className="flex flex-col md:flex-row border-b border-[#888] md:flex-1 md:overflow-hidden">
           {/* Left: donut chart + macro legend */}
-          <div className="flex-1 flex flex-col items-center overflow-y-auto border-r border-[#888]">
+          <div className="flex flex-col items-center border-b border-[#888] md:border-b-0 md:flex-1 md:overflow-y-auto md:border-r">
             <DonutChart
               protein={summary?.total_protein_g ?? 0}
               carbs={summary?.total_carbs_g ?? 0}
@@ -147,8 +147,8 @@ export default function DashboardPage() {
           </div>
 
           {/* Right: meal distribution */}
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <div className="flex-1 flex flex-col gap-8 p-6 overflow-y-auto">
+          <div className="flex flex-col md:flex-1 md:overflow-hidden">
+            <div className="flex flex-col gap-6 p-4 pb-20 [@media(min-width:401px)]:pb-4 md:gap-8 md:p-6 md:pb-4 md:flex-1 md:overflow-y-auto">
               {(summary?.meals?.length ?? 0) > 0 && (
                 <p className="text-[24px] font-light text-[#161616] tracking-[-0.02em] leading-6.75">
                   Meal Distribution
@@ -165,7 +165,7 @@ export default function DashboardPage() {
               )}
             </div>
             {(summary?.meals?.length ?? 0) > 0 && (
-              <div className="shrink-0 p-6 pt-0 border-b border-[#888]">
+              <div className="shrink-0 p-4 border-t border-[#888] bg-white [@media(max-width:400px)]:fixed [@media(max-width:400px)]:bottom-0 [@media(max-width:400px)]:left-0 [@media(max-width:400px)]:right-0 [@media(max-width:400px)]:z-20 [@media(min-width:401px)]:border-t-0 [@media(min-width:401px)]:pt-0 md:p-6 md:pt-0 md:border-t-0 md:border-b md:border-[#888] md:bg-transparent">
                 <Link
                   href="/add"
                   className="w-full h-12 bg-[#161616] text-white text-[18px] tracking-[-0.04em] rounded-[6px] hover:opacity-80 transition-opacity flex items-center justify-center"
