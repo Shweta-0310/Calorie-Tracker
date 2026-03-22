@@ -1,6 +1,7 @@
 import { Router, Request, Response } from "express";
 import multer from "multer";
 import { analyzeFood } from "../services/gemini";
+import { uploadImage } from "../services/supabase";
 
 const router = Router();
 const upload = multer({
@@ -22,8 +23,11 @@ router.post("/", upload.single("image"), async (req: Request, res: Response): Pr
   }
 
   try {
-    const nutrients = await analyzeFood(req.file.buffer, req.file.mimetype);
-    res.json({ ...nutrients, image_url: "" });
+    const [nutrients, image_url] = await Promise.all([
+      analyzeFood(req.file.buffer, req.file.mimetype),
+      uploadImage(req.file.buffer, req.file.originalname, req.file.mimetype),
+    ]);
+    res.json({ ...nutrients, image_url });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Analysis failed";
     res.status(500).json({ error: message });
