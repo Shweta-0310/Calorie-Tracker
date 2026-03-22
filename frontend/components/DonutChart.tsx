@@ -4,23 +4,29 @@ interface Props {
   protein: number;
   carbs: number;
   fats: number;
+  calories: number;
   totalMeals: number;
 }
 
-export default function DonutChart({ protein, carbs, fats, totalMeals }: Props) {
+export default function DonutChart({ protein, carbs, fats, calories, totalMeals }: Props) {
   const r = 100;
   const cx = 123;
   const cy = 123;
   const circumference = 2 * Math.PI * r;
-  const total = protein + carbs + fats || 1;
-  const hasData = protein + carbs + fats > 0;
+
+  const macroCal = protein * 4 + fats * 9 + carbs * 4;
+  const others = Math.max(0, calories - macroCal);
+  const total = calories + protein + fats + carbs + others || 1;
+  const hasData = calories + protein + fats + carbs > 0;
 
   const segments = hasData
     ? [
+        { value: calories, color: "#ffb1ec" },
         { value: protein, color: "#beefff" },
-        { value: fats, color: "#ffb1ec" },
-        { value: carbs, color: "#fdccaf" },
-      ]
+        { value: fats,    color: "#bfbeff" },
+        { value: carbs,   color: "#fdccaf" },
+        { value: others,  color: "#e1e1e1" },
+      ].filter(s => s.value > 0)
     : [{ value: 1, color: "#ebebeb" }];
 
   let accumulated = 0;

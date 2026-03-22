@@ -12,7 +12,14 @@ const MACROS = [
   { label: "Protein",  color: "#beefff", getValue: (p: Props) => `${Math.round(p.protein_g)}g` },
   { label: "Fats",     color: "#bfbeff", getValue: (p: Props) => `${Math.round(p.fats_g)}g` },
   { label: "Carbs",    color: "#fdccaf", getValue: (p: Props) => `${Math.round(p.carbs_g)}g` },
-  { label: "Others",   color: "#e1e1e1", getValue: () => "0g" },
+  {
+    label: "Others",
+    color: "#e1e1e1",
+    getValue: (p: Props) => {
+      const others = Math.max(0, p.calories - (p.protein_g * 4 + p.fats_g * 9 + p.carbs_g * 4));
+      return `${Math.round(others)} kcal`;
+    },
+  },
 ];
 
 export default function MacroProgress(props: Props) {

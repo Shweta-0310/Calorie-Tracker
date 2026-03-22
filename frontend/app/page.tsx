@@ -128,6 +128,7 @@ export default function DashboardPage() {
               protein={summary?.total_protein_g ?? 0}
               carbs={summary?.total_carbs_g ?? 0}
               fats={summary?.total_fats_g ?? 0}
+              calories={summary?.total_calories ?? 0}
               totalMeals={summary?.meals.length ?? 0}
             />
             {loading ? (
