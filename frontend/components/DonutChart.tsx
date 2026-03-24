@@ -57,17 +57,17 @@ export default function DonutChart({ protein, carbs, fats, calories, totalMeals 
         })}
         <text
           x={cx}
-          y={cy + 4}
+          y={cy + 5}
           textAnchor="middle"
-          style={{ fontSize: 64, fontWeight: 400, fill: "#161616", letterSpacing: "-1.28px", fontFamily: "Inter, sans-serif" }}
+          style={{ fontSize: 48, fontWeight: 400, fill: "#161616", letterSpacing: "-1.28px", fontFamily: "Inter, sans-serif" }}
         >
           {String(totalMeals).padStart(2, "0")}
         </text>
         <text
           x={cx}
-          y={cy + 38}
+          y={cy + 23}
           textAnchor="middle"
-          style={{ fontSize: 24, fontWeight: 300, fill: "#161616", letterSpacing: "-0.48px", fontFamily: "Inter, sans-serif" }}
+          style={{ fontSize: 20, fontWeight: 300, fill: "#161616", letterSpacing: "-0.48px", fontFamily: "Inter, sans-serif" }}
         >
           Total Meal
         </text>

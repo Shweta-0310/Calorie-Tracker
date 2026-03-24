@@ -24,14 +24,14 @@ const MACROS = [
 
 export default function MacroProgress(props: Props) {
   return (
-    <div className="flex flex-col gap-4 md:gap-6.5 w-full px-4 py-6 md:px-14 md:py-14">
+    <div className="flex flex-col gap-4 md:gap-6.5 w-full px-4 py-4 md:px-14 md:py-4">
       {MACROS.map(({ label, color, getValue }) => (
         <div key={label} className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 md:w-5.5 md:h-5.5 rounded-lg shrink-0" style={{ backgroundColor: color }} />
-            <span className="text-[16px] md:text-[20px] text-black tracking-[-0.04em] font-normal">{label}</span>
+            <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: color }} />
+            <span className="text-[16px] text-black tracking-[-0.04em] font-normal">{label}</span>
           </div>
-          <span className="text-[16px] md:text-[20px] text-black tracking-[-0.04em] font-normal">{getValue(props)}</span>
+          <span className="text-[16px] text-black tracking-[-0.04em] font-normal">{getValue(props)}</span>
         </div>
       ))}
     </div>
